@@ -7,6 +7,12 @@ provider "hcloud" {
 }
 
 terraform {
+  cloud {
+    organization = "alex-organization"
+    workspaces {
+      tags = ["game-servers"]
+    }
+  }
   required_providers {
     hcloud = {
       version = ">= 1.36.1"
