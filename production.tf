@@ -2,7 +2,7 @@ module "minecraft" {
   source         = "./modules/hetzner-game-server"
   server_name    = "minecraft"
   server_type    = "CPX31"
-  game_firewalls = [hcloud_firewall.minecraft.id, hcloud_firewall.ssh.id]
+  game_firewall_ids = [hcloud_firewall.minecraft.id, hcloud_firewall.ssh.id]
   ssh_keys       = [data.hcloud_ssh_key.games.public_key]
 }
 
