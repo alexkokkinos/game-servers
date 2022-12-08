@@ -9,7 +9,7 @@ variable "disk_size" {
 
 variable "game_firewalls" {
   type = list(object({
-    rule = map()
+    rule = map(any)
   }))
 }
 
