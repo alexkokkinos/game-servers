@@ -22,7 +22,7 @@ resource "hcloud_firewall" "minecraft" {
   }
   rule {
     direction = "in"
-    protocol  = "udpx"
+    protocol  = "udp"
     port      = "25565"
     source_ips = [
       "0.0.0.0/0",
