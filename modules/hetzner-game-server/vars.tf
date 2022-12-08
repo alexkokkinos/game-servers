@@ -7,10 +7,8 @@ variable "disk_size" {
   default = 20
 }
 
-variable "game_firewalls" {
-  type = list(object({
-    rule = map(any)
-  }))
+variable "game_firewall_ids" {
+  type = list(number)
 }
 
 variable "ssh_keys" {
