@@ -9,6 +9,7 @@ resource "hcloud_server" "game" {
   firewall_ids = var.game_firewall_ids
   location     = "ash"
   ssh_keys     = var.ssh_keys
+  backups      = true
 }
 
 resource "hcloud_volume" "main" {
