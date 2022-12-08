@@ -3,7 +3,7 @@ module "minecraft" {
   server_name       = "minecraft"
   server_type       = "CPX31"
   game_firewall_ids = [hcloud_firewall.minecraft.id, hcloud_firewall.ssh.id]
-  ssh_keys          = [data.hcloud_ssh_key.games.public_key]
+  ssh_keys          = [data.hcloud_ssh_key.games.id]
 }
 
 data "hcloud_ssh_key" "games" {

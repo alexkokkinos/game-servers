@@ -12,7 +12,7 @@ variable "game_firewall_ids" {
 }
 
 variable "ssh_keys" {
-  type = list(any)
+  type = list(string)
 }
 
 variable "server_type" {
