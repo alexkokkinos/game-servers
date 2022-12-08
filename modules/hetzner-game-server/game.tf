@@ -2,6 +2,7 @@ resource "hcloud_server" "game" {
   name        = var.server_name
   image       = var.os_image
   server_type = var.server_type
+  server_name = var.server_name
   public_net {
     ipv4_enabled = true
     ipv6_enabled = false

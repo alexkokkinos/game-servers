@@ -20,3 +20,7 @@ variable "ssh_keys" {
 variable "server_type" {
   type = string
 }
+
+variable "server_name" {
+  type = string
+}
