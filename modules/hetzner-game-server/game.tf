@@ -6,7 +6,7 @@ resource "hcloud_server" "game" {
     ipv4_enabled = true
     ipv6_enabled = false
   }
-  firewall_ids = var.game_firewalls
+  firewall_ids = var.game_firewall_ids
   location     = "ash"
   ssh_keys     = var.ssh_keys
 }
