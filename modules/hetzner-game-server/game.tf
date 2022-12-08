@@ -14,7 +14,7 @@ resource "hcloud_server" "game" {
 resource "hcloud_volume" "main" {
   name      = "volume1"
   size      = var.disk_size
-  server_id = hcloud_server.game.placement_group_id
+  server_id = hcloud_server.game.id
   automount = true
   format    = "ext4"
 }
