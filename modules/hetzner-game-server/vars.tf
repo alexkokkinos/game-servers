@@ -16,3 +16,7 @@ variable "game_firewalls" {
 variable "ssh_keys" {
   type = list(any)
 }
+
+variable "server_type" {
+  type = string
+}
