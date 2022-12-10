@@ -30,6 +30,16 @@ resource "hcloud_firewall" "minecraft" {
       "::/0"
     ]
   }
+
+  rule {
+    direction = "in"
+    protocol = "tcp"
+    port = "8443"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0" 
+    ]
+  }
 }
 
 resource "hcloud_firewall" "ssh" {
