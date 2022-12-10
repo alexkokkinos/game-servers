@@ -11,11 +11,3 @@ resource "hcloud_server" "game" {
   ssh_keys     = var.ssh_keys
   backups      = true
 }
-
-resource "hcloud_volume" "main" {
-  name      = "volume1"
-  size      = var.disk_size
-  server_id = hcloud_server.game.id
-  automount = true
-  format    = "ext4"
-}
