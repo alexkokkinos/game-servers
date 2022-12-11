@@ -1,0 +1,26 @@
+#cloud-config
+# Set everything up
+# NOT IN USE
+groups:
+  - minecraft
+
+users:
+  - default
+  - name: minecraft
+    gecos: minecraft
+    shell: /bin/bash
+    primary_group: minecraft
+
+packages:
+  - openjdk-17-jre-headless
+  - unzip
+  - make
+  - gcc
+  - libc6-dev
+
+runcmd:
+  - java -jar forge-1.18.2-40.1.85-installer.jar --installServer
+  - git clone https://github.com/Tiiffi/mcrcon.git
+  - cd mcrcon
+  - make
+  - sudo make install

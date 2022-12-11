@@ -1,0 +1,14 @@
+Description=Minecraft Server
+After=network.target
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/home/minecraft
+ExecStart=/usr/local/bin/minecraft/start
+ExecStop=/usr/local/bin/minecraft/stop
+Restart=always
+
+[Install]
+WantedBy=default.target

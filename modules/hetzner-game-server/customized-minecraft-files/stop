@@ -1,0 +1,9 @@
+#!/bin/sh
+# /usr/local/bin/minecraft/stop
+
+/usr/local/bin/minecraft/rcon stop
+
+while kill -0 $MAINPID 2>/dev/null
+do
+  sleep 0.5
+done
