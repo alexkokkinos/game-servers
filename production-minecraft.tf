@@ -6,10 +6,6 @@ module "minecraft" {
   ssh_keys          = [data.hcloud_ssh_key.games.id]
 }
 
-data "hcloud_ssh_key" "games" {
-  name = "Hetzner"
-}
-
 resource "hcloud_firewall" "minecraft" {
   name = "minecraft-firewall-tcp"
   rule {
@@ -25,19 +21,6 @@ resource "hcloud_firewall" "minecraft" {
     direction = "in"
     protocol  = "udp"
     port      = "25565"
-    source_ips = [
-      "0.0.0.0/0",
-      "::/0"
-    ]
-  }
-}
-
-resource "hcloud_firewall" "ssh" {
-  name = "game-server-ssh"
-  rule {
-    direction = "in"
-    protocol  = "tcp"
-    port      = "22"
     source_ips = [
       "0.0.0.0/0",
       "::/0"

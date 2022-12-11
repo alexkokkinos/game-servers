@@ -6,10 +6,6 @@ module "valheim" {
   ssh_keys          = [data.hcloud_ssh_key.games.id]
 }
 
-data "hcloud_ssh_key" "games" {
-  name = "Hetzner"
-}
-
 resource "hcloud_firewall" "valheim" {
   name = "valheim-firewall"
   rule {
@@ -41,15 +37,3 @@ resource "hcloud_firewall" "valheim" {
   }
 }
 
-resource "hcloud_firewall" "ssh" {
-  name = "game-server-ssh"
-  rule {
-    direction = "in"
-    protocol  = "tcp"
-    port      = "22"
-    source_ips = [
-      "0.0.0.0/0",
-      "::/0"
-    ]
-  }
-}
