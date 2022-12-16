@@ -9,8 +9,7 @@ resource "hcloud_firewall" "ssh" {
     protocol  = "tcp"
     port      = "22"
     source_ips = [
-      "0.0.0.0/0",
-      "::/0"
+      var.home_ip
     ]
   }
 }

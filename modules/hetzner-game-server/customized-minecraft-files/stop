@@ -1,6 +1,7 @@
 #!/bin/sh
 # /usr/local/bin/minecraft/stop
 
+/usr/local/bin/minecraft/rcon save-all
 /usr/local/bin/minecraft/rcon stop
 
 while kill -0 $MAINPID 2>/dev/null
