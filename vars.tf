@@ -1,3 +1,4 @@
 variable "home_ip" {
-  type = string
+  type      = string
+  sensitive = true
 }
