@@ -10,6 +10,7 @@ Type=simple
 Restart=on-failure
 RestartSec=10
 KillSignal=SIGINT
+User=steam
 Group=steam
 WorkingDirectory=/home/steam/valheim
 ExecStart=/home/steam/valheim-server/valheim_server.x86_64 -name "Grassy Tram Server" -port 2456 -world "Tramheim" -password "penis" -savedir /home/steam/valheim-server/saved
