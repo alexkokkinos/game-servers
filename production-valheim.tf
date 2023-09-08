@@ -6,6 +6,14 @@ module "valheim" {
   ssh_keys          = [data.hcloud_ssh_key.games.id]
 }
 
+module "valheim2" {
+  source            = "./modules/hetzner-game-server"
+  server_name       = "valheim2"
+  server_type       = "cpx31"
+  game_firewall_ids = [hcloud_firewall.valheim.id, hcloud_firewall.ssh.id]
+  ssh_keys          = [data.hcloud_ssh_key.games.id]
+}
+
 resource "hcloud_firewall" "valheim" {
   name = "valheim-firewall"
   rule {
