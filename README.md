@@ -27,15 +27,17 @@ scp valheim.service root@:~/
 scp install-update-valheim.sh root@:~/
 ```
 
+https://developer.valvesoftware.com/wiki/SteamCMD#Linux
+
 ### steamcmd/Valheim Install
 ```shell
 # ROOT USER
 useradd -m steam
 passwd steam
 sudo -u steam -s
-cd /home/steam
-apt install steamcmd
-add-apt-repository multiverse
+chsh -s /bin/bash steam
+# Edit sources.list and add Hetnzer mirrors https://docs.hetzner.com/robot/dedicated-server/operating-systems/hetzner-aptitude-mirror/
+apt update
 apt install software-properties-common
 dpkg --add-architecture i386
 apt update
@@ -54,7 +56,7 @@ sudo su - steam
 # STEAM USER
 wget https://github.com/Backblaze/B2_Command_Line_Tool/releases/latest/download/b2-linux
 chmod +x b2-linux
-./b2-linux authorize-account
+./b2-linux authorize-account # Key is in 1Password, or make a new one
 ```
 
 ### Restore Save Game Backups:
@@ -64,10 +66,16 @@ chmod +x b2-linux
 
 ### Valheim Service:
 ```shell
-
 # ROOT USER
 mv ~/valheim.service /etc/systemd/system/valheim.service
 chmod 0644 /etc/systemd/system/valheim.service
+```
+
+### Start Services
+```shell
+# ROOT USER
+systemctl enable valheim.service
+systemctl start valheim.service
 ```
 
 ### Set up regular backups
