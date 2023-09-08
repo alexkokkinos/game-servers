@@ -10,6 +10,7 @@ module "valheim2" {
   source            = "./modules/hetzner-game-server"
   server_name       = "valheim2"
   server_type       = "cpx31"
+  os_image          = "debian-12"
   game_firewall_ids = [hcloud_firewall.valheim.id, hcloud_firewall.ssh.id]
   ssh_keys          = [data.hcloud_ssh_key.games.id]
 }
