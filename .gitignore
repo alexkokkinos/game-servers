@@ -1,3 +1,10 @@
+# Minecraft secrets
+ops.json
+whitelist.json
+
+# Backup "secrets"
+crontab*
+
 # Local .terraform directories
 **/.terraform/*
 
