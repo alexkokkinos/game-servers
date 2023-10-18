@@ -1,10 +1,10 @@
-module "valheim" {
-  source            = "./modules/hetzner-game-server"
-  server_name       = "valheim"
-  server_type       = "cpx31"
-  game_firewall_ids = [hcloud_firewall.valheim.id, hcloud_firewall.ssh.id]
-  ssh_keys          = [data.hcloud_ssh_key.games.id]
-}
+# module "valheim" {
+#   source            = "./modules/hetzner-game-server"
+#   server_name       = "valheim"
+#   server_type       = "cpx31"
+#   game_firewall_ids = [hcloud_firewall.valheim.id, hcloud_firewall.ssh.id]
+#   ssh_keys          = [data.hcloud_ssh_key.games.id]
+# }
 
 resource "hcloud_firewall" "valheim" {
   name = "valheim-firewall"
