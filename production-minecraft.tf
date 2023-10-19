@@ -1,5 +1,3 @@
-# Deleted
-
 module "minecraft" {
   source            = "./modules/hetzner-game-server"
   server_name       = "minecraft"

@@ -12,4 +12,13 @@ resource "hcloud_firewall" "ssh" {
       var.home_ip
     ]
   }
+  # fish shell config
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "8080"
+    source_ips = [
+      var.home_ip
+    ]
+  }
 }
