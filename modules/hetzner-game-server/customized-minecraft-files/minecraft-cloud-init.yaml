@@ -24,4 +24,4 @@ runcmd:
   - git clone https://github.com/Tiiffi/mcrcon.git
   - cd mcrcon
   - make
-  - sudo make install
+  - make install

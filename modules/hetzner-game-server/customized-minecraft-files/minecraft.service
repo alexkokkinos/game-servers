@@ -2,7 +2,7 @@ Description=Minecraft Server
 After=network.target
 
 [Service]
-Type=simple
+Type=exec
 User=minecraft
 Group=minecraft
 WorkingDirectory=/home/minecraft

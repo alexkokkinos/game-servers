@@ -1,8 +1,9 @@
 #!/bin/sh
 # /usr/local/bin/minecraft/stop
 
-/usr/local/bin/minecraft/rcon save-all
-/usr/local/bin/minecraft/rcon stop
+export MCRCON_PASS="jokVZFYP9D2NZiKRA3Ho"
+/usr/local/bin/mcrcon save-all
+/usr/local/bin/mcrcon stop
 
 while kill -0 $MAINPID 2>/dev/null
 do
