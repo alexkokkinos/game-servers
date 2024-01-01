@@ -89,3 +89,30 @@ In the crontab editor:
 0 15 * * 1 /home/steam/b2-linux sync --allowEmptySource /home/steam/valheim-server/saved b2://tram-game-server-backups/valheim/saved
 ```
 
+## Install Minecraft
+
+```shell
+useradd -m minecraft
+groupadd minecraft
+mv forge-1.20.1-47.1.28-installer.jar /home/minecraft/
+chown minecraft:minecraft /home/minecraft/forge-1.20.1-47.1.28-installer.jar
+apt install unzip make gcc libc6-dev git -y
+apt install openjdk-17-jre-headless
+apt update
+nano /usr/local/bin/minecraft/start ## Put in the start script (customized-minecraft-files)
+nano /usr/local/bin/minecraft/start ## Put in the stop script (customized-minecraft-files)
+chmod +x /usr/local/bin/minecraft/stop
+chmod +x /usr/local/bin/minecraft/start
+nano /etc/systemd/system/minecraft.service # minecraft.service
+nano /home/minecraft/whitelist.json # whitelist.json
+```
+
+### mcrcon in /home/minecraft 
+```shell
+git clone https://github.com/Tiiffi/mcrcon.git
+cd mcrcon
+make
+sudo make install
+```
+
+### Update Minecraft files
