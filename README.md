@@ -10,7 +10,7 @@
 production-[server].tf #So far, it creates an instance of the hetzner-game-server module to create a blank server intended for Minecraft. Also creates firewalls for this purpose.
 ```
 
-## Crap to remove from ~/mods
+## Crap to remove from ~/mods (mincraft)
 
 ```shell
 rm notenoughanimations-forge*
