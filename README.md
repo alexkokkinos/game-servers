@@ -115,7 +115,7 @@ make
 sudo make install
 ```
 
-### TODO: Backups
+### Backups
 
 #### Install b2
 
