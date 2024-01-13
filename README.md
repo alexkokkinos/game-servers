@@ -116,3 +116,91 @@ sudo make install
 ```
 
 ### TODO: Backups
+
+#### Install b2
+
+Download b2-linux and SCP to the server. Place it somewhere. `b2-linux authorize-something`
+
+`/root/minecraft-backup.sh`
+
+```bash
+#!/bin/bash
+backup_folder="/home/minecraft"
+backup_file="minecraft_backup_$(date +%Y%m%d_%H%M%S).tar.gz"
+bucket_name="tram-game-server-backups"
+
+RCON_HOST="127.0.0.1"
+RCON_PORT="25575"
+RCON_PASS="jokVZFYP9D2NZiKRA3Ho"
+
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say THE SERVER IS GOING DOWN FOR WEEKLY BACKUP IN 60 SECONDS!"
+
+sleep 60
+
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say THE SERVER IS GOING DOWN NOW FOR WEEKLY BACKUP!"
+sleep 1
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say 5..."
+sleep 1
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say 4..."
+sleep 1
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say 3..."
+sleep 1
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say 2..."
+sleep 1
+mcrcon -H $RCON_HOST -P $RCON_PORT -p $RCON_PASS "say 1..."
+sleep 1
+
+systemctl stop minecraft
+
+# Compress the minecraft directory
+tar -czvf $backup_file --exclude "mods" -C $backup_folder .
+
+systemctl start minecraft
+
+/root/b2-linux upload_file $bucket_name $backup_file minecraft/$backup_file
+
+echo "Cleaning up old backup files..."
+. /root/delete_old_backups.sh
+```
+
+`/root/delete_old_backups.sh`
+
+```bash
+#!/bin/bash
+
+# B2 Bucket Details
+bucket_name="tram-game-server-backups"
+directory_path="minecraft" # Directory inside the bucket
+
+# List files in the directory sorted by date (newest first)
+files=$(/root/b2-linux ls --long $bucket_name $directory_path | sort -rk3,3)
+
+# Count the number of files
+file_count=$(echo "$files" | wc -l)
+
+# Number of files to keep
+keep=10
+
+# Check if there are more than 10 files
+if [ $file_count -gt $keep ]; then
+    # Get the files to delete
+    files_to_delete=$(echo "$files" | tail -n +$((keep + 1)))
+
+    # Loop through and delete each file
+    echo "$files_to_delete" | while read -r file; do
+        file_name=$(echo $file | awk '{print $9}')
+        if [ ! -z "$file_name" ]; then
+            echo "Deleting $file_name"
+            /root/b2-linux delete_file_version $file_name $file_name
+        fi
+    done
+else
+    echo "There are $file_count files in the bucket, no need to delete."
+fi
+```
+
+Crontab:
+
+```shell
+0 15 * * 1 /root/minecraft-backup.sh
+```
