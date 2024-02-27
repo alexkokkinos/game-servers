@@ -16,6 +16,18 @@ production-[server].tf #So far, it creates an instance of the hetzner-game-serve
 rm notenoughanimations-forge*
 rm preview_OptiFine_*
 rm DistantHorizons*
+rm oculus*
+```
+
+## Plain Debian steps
+
+```shell
+sudo su -
+yum install -y sudo
+usermod -aG sudo [adminuser]
+apt install -y 
+chsh -s /usr/bin/fish
+# TODO: SSH keys, no password SSH, passwordless SUDO
 ```
 
 ## Install Valheim
