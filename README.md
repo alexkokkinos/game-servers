@@ -216,3 +216,13 @@ Crontab:
 ```shell
 0 15 * * 1 /root/minecraft-backup.sh
 ```
+
+## All The Mods 9
+
+The ATM9 ModPack Plus
+
+Wall-Jump TXF
+GoProne
+Curios Compat
+Keep My Soil Tilled
+Collective
