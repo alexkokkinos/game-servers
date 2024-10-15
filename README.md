@@ -108,11 +108,11 @@ useradd -m minecraft
 groupadd minecraft
 mv forge-1.20.1-47.1.28-installer.jar /home/minecraft/
 chown minecraft:minecraft /home/minecraft/forge-1.20.1-47.1.28-installer.jar
-apt install unzip make gcc libc6-dev git -y
+apt install unzip make gcc libcaction6-dev git -y
 apt install openjdk-17-jre-headless
 apt update
 nano /usr/local/bin/minecraft/start ## Put in the start script (customized-minecraft-files)
-nano /usr/local/bin/minecraft/start ## Put in the stop script (customized-minecraft-files)
+nano /usr/local/bin/minecraft/stop ## Put in the stop script (customized-minecraft-files)
 chmod +x /usr/local/bin/minecraft/stop
 chmod +x /usr/local/bin/minecraft/start
 nano /etc/systemd/system/minecraft.service # minecraft.service
